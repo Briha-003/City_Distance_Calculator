@@ -1,0 +1,48 @@
+// https://www.latlong.net - for finding the co ordinates of the location
+
+import java.util.Scanner; 
+
+public class CityDistanceCalculator 
+{
+
+    public static void main(String[] args) 
+    {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("Enter the latitude and longitude of City 1 (in degrees):");
+        double lat1 = scanner.nextDouble();
+        double lon1 = scanner.nextDouble();
+
+        System.out.println("Enter the latitude and longitude of City 2 (in degrees):");
+        double lat2 = scanner.nextDouble();
+        double lon2 = scanner.nextDouble();
+
+        System.out.println("Enter the unit of distance (e.g., 'K' for kilometers, 'M' for miles):");
+        String unit = scanner.next();
+
+        double distance = calculateDistance(lat1, lon1, lat2, lon2, unit);
+        System.out.println("The distance between the two cities is: " + distance + " " + unit);
+
+        scanner.close();
+    }
+
+    public static double calculateDistance(double lat1, double lon1, double lat2, double lon2, String unit) 
+    {
+        final double RADIUS_OF_EARTH_KM = 6371; // Earth's radius in kilometers
+        final double RADIUS_OF_EARTH_MILES = 3963.1676; // Earth's radius in miles
+
+        double dLat = Math.toRadians(lat2 - lat1);
+        double dLon = Math.toRadians(lon2 - lon1);
+
+        double a = Math.pow(Math.sin(dLat / 2), 2) +
+                   Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) *
+                   Math.pow(Math.sin(dLon / 2), 2);
+
+        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+        double distanceInKm = RADIUS_OF_EARTH_KM * c;
+        double distanceInMiles = RADIUS_OF_EARTH_MILES * c;
+
+        return unit.equalsIgnoreCase("K") ? distanceInKm : distanceInMiles;
+    }
+}
