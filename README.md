@@ -6,7 +6,9 @@ The CityDistanceCalculator uses the Haversine formula to determine the distance 
 
 # Features
 User Interaction: Accepts latitude and longitude values for two cities and the desired unit of distance.
+
 Accurate Calculations: Utilizes the Haversine formula for precise distance calculations on a spherical Earth model.
+
 Unit Flexibility: Supports distance calculations in both kilometers and miles based on user preference.
 
 # Usage
