@@ -11,7 +11,9 @@ Unit Flexibility: Supports distance calculations in both kilometers and miles ba
 
 # Usage
 Input: Enter the latitude and longitude of two cities in degrees.
+
 Unit Selection: Choose the desired unit of distance ('K' for kilometers, 'M' for miles).
+
 Output: Displays the calculated distance between the two cities in the specified unit.
 
 # Getting Started
